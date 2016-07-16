@@ -6,12 +6,12 @@ Example of using vagrant docker provider and puppet for simple node app
 1. Create Dockerfile
 1. Build Docker image `docker build -t <your username>/<image name> .`
 1. Verify that new image has been created `docker images`
-1. Run the Docker image (create new Docker container) `docker run -p 49160:8080 -d <your username>/<image name>`
-1. Verify that that container has been created `docker ps`
-1. Verify that node app has been started `docker logs <container id>`. 
+1. Run the Docker image (create new Docker container) `docker run -p 49160:8080 -d <your username>/<image name>`. 
 _Running your image with `-d` runs the container in detached mode, 
 leaving the container running in the background. The `-p` flag 
 redirects a public port to a private port in the container._
+1. Verify that that container has been created `docker ps`
+1. Verify that node app has been started `docker logs <container id>`. 
 1. Test your node app with `curl -i localhost:49160` or open `localhost:49160` in your web browser
 
 More details at https://docs.docker.com/v1.10/engine/examples/nodejs_web_app/
