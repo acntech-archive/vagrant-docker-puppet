@@ -13,5 +13,8 @@ redirects a public port to a private port in the container. `--name` flag assign
 1. Verify that that container has been created `docker ps`
 1. Verify that node app has been started `docker logs <container name>`. 
 1. Test your node app with `curl -i localhost:49160` or open `localhost:49160` in your web browser
+1. SSH into running Docker container by `docker exec -i -t <container name> /bin/bash` and verify that files are placed in src folder `ls /src`.
+Type `exit` to leave bash.
+1. Stop the running Docker container by `docker stop <container name>` and start it with `docker start <container name>`
 
 More details at https://docs.docker.com/v1.10/engine/examples/nodejs_web_app/
