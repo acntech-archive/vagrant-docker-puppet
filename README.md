@@ -29,4 +29,4 @@ redirects a public port to a private port in the container. `--name` flag assign
 Type `exit` to leave bash.
 1. Stop the running Docker container by `docker stop <container name>` and start it with `docker start <container name>`
 
-More details at https://docs.docker.com/v1.10/engine/examples/nodejs_web_app/
+More details at https://docs.docker.com/v1.10/engine/examples/nodejs_web_app/ and https://docs.docker.com/engine/understanding-docker/
