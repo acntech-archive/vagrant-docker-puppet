@@ -12,7 +12,19 @@ leaving the container running in the background. The `-p` flag
 redirects a public port to a private port in the container. `--name` flag assigns container name for easy access later on_
 1. Verify that that container has been created `docker ps`
 1. Verify that node app has been started `docker logs <container name>`. 
-1. Test your node app with `curl -i localhost:49160` or open `localhost:49160` in your web browser
+1. Test your node app with `curl -i localhost:49160` or open `localhost:49160` in your web browser. You should see something like:
+
+    ```
+    HTTP/1.1 200 OK
+    X-Powered-By: Express
+    Content-Type: text/html; charset=utf-8
+    Content-Length: 12
+    Date: Sat, 16 Jul 2016 15:46:54 GMT
+    Connection: keep-alive
+    
+    Hello world
+    ```
+
 1. SSH into running Docker container by `docker exec -i -t <container name> /bin/bash` and verify that files are placed in src folder `ls /src`.
 Type `exit` to leave bash.
 1. Stop the running Docker container by `docker stop <container name>` and start it with `docker start <container name>`
