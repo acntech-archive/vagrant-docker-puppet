@@ -1,5 +1,7 @@
+# Specify the base image
 FROM        centos:centos6
 
+# Set maintainer of this Docker container
 MAINTAINER  Ismar Slomic "ismar.slomic@accenture.com"
 
 # Enable Extra Packages for Enterprise Linux (EPEL) for CentOS
@@ -12,4 +14,5 @@ RUN         yum install -y nodejs npm
 COPY        /src /src
 RUN         cd /src; npm install --production
 
+# Start node js process and index.js
 CMD         ["node", "/src/index.js"]
