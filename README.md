@@ -4,6 +4,14 @@ Example of using [Vagrant](https://www.vagrantup.com/), [Docker](https://www.doc
 Steps below shows how to iterative establish the configurations and existing configuration is updated for each step. 
 Link to file revisions are included below (TODO) while step descriptions are more documentation of how to reproduce the process in other examples and scenarios.
 
+Following version has been used in this project:
+- Vagrant v1.8.4
+- VirtualBox v5.0.24
+- Docker v1.12.0-rc4 (on local laptop) and v1.11.2 with Vagrant
+- Puppet (TODO)
+
+Im using OSX as host.
+
 # Step 1 - Creating Dockerfile
 1. [Install](https://docs.docker.com/engine/installation/) Docker on your local laptop
 1. Create Dockerfile. _See https://docs.docker.com/engine/reference/builder/#dockerfile-reference for more information_
