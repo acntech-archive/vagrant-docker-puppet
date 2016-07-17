@@ -1,6 +1,10 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# This Vagrantfile is used for configuring the Docker Containers with Vagrant and must be seen in relation to the
+# /host/Vagrantfile configuring the Docker Host
+# Maintainer: Ismar Slomic "ismar.slomic@accenture.com"
+
 # Specify Vagrant version and Vagrant API version
 Vagrant.require_version ">= 1.6.0"
 VAGRANTFILE_API_VERSION = "2"
