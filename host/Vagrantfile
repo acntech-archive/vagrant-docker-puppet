@@ -1,0 +1,46 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# Specify Vagrant version and Vagrant API version
+Vagrant.require_version ">= 1.6.0"
+VAGRANTFILE_API_VERSION = "2"
+
+# Create and configure the VM(s)
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.provider "virtualbox" do |v|
+    v.name = "docker-host"
+  end
+
+  # Assign a friendly name to this host VM
+  config.vm.hostname = "docker-host"
+
+  # Skip checking for an updated Vagrant box
+  config.vm.box_check_update = false
+
+  # Always use Vagrant's default insecure key
+  config.ssh.insert_key = false
+
+  # Spin up a "host box" for use with the Docker provider
+  # and then provision it with Docker
+  config.vm.box = "ubuntu/trusty64"
+
+  # Provision Docker (install Docker, pull Docker container, configure containers)
+  # See https://www.vagrantup.com/docs/provisioning/docker.html
+  config.vm.provision "docker"
+
+  # The following line terminates all ssh connections. Therefore
+  # Vagrant will be forced to reconnect.
+  # That's a workaround to have the docker command in the PATH
+  # see https://github.com/mitchellh/vagrant/issues/3998#issuecomment-60359659
+  config.vm.provision "shell", inline: "ps aux | grep 'sshd:' | awk '{print $2}' | xargs kill"
+
+  # Forward port 8080 to host machine
+  config.vm.network "forwarded_port", guest: 49160, host: 49161
+
+  # Disable synced folders (prevents an NFS error on "vagrant up")
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
+  # Setup shared volumes
+  config.vm.synced_folder "/Users/ismarslomic/src", "/ismar-src"
+end
