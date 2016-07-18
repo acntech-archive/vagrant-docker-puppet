@@ -12,8 +12,22 @@ VAGRANTFILE_API_VERSION = "2"
 # Create and configure the VM(s)
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.provider "virtualbox" do |v|
-    v.name = "docker-host"
+  config.vm.provider "virtualbox" do |virtualbox|
+    # Name of the virtual machine
+    virtualbox.name = "docker-host"
+
+    # Display the VirtualBox GUI when booting the machine. Uncomment line below first
+    # virtualbox.gui = true
+
+    # Customize the amount of memory on the VM to 4 GB
+    virtualbox.memory = 4096
+
+    # Customize the number of CPUs to 2
+    virtualbox.cpus = 2
+
+    # Reduce import time and space by basing on master VM. Note that vagrant will create two vms
+    virtualbox.linked_clone = true if Vagrant::VERSION =~ /^1.8/
+
   end
 
   # Assign a friendly name to this host VM
@@ -47,4 +61,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Setup shared volumes
   config.vm.synced_folder "/Users/ismarslomic/src", "/ismar-src"
-end
+end #Vagrant.configure
