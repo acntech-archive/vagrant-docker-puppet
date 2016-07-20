@@ -12,6 +12,12 @@ Following version has been used in this project:
 
 Im using OSX as host.
 
+This project has been inspired by Activelamp Blog posts:
+- [Hasing out docker workflow - Part 1](http://activelamp.com/blog/devops/hashing-out-docker-workflow/)
+- [Using Vagrant with a Docker Workflow - Part 2](http://activelamp.com/blog/devops/docker-with-vagrant/)
+- [Setting up a Docker development environment with Vagrant - Part 3](http://activelamp.com/blog/devops/local-docker-development-with-vagrant/)
+- [Using Jenkins to bake images in a Docker Workflow - Part 4](http://activelamp.com/blog/devops/jenkins-build-docker-images/)
+
 # Step 1 - Creating Dockerfile
 1. [Install](https://docs.docker.com/engine/installation/) Docker on your local laptop
 1. Create Dockerfile. _See https://docs.docker.com/engine/reference/builder/#dockerfile-reference for more information_
@@ -73,7 +79,8 @@ _Note that Vagrantfile is using Ruby syntax. See https://www.vagrantup.com/docs/
 1. If you do any changes to `Vagrantfiles` or `Dockerfile` after environment are running (`vagrant up`) you should use `vagrant reload --provision`. The flag `--provision` will make sure to re-run the Docker provision
 1. You can shut down running Vagrant machines by using `vagrant halt <machine id>` (machine id can be found by `vagrant global-status`)
 1. You can remove running Vagrant machines by using v`agrant destroy -f <machine id>`. _Note that this command will destroy all resources created during creation process, including data inside vm/container_
-1. Login into guest machine `docker-host` (by using VirtualBox). Use `vagrant` as username and password.
+1. Login into guest machine `docker-host` (by using VirtualBox GUI). Use `vagrant` as username and password. You can also SSH into the machine by running `vagrant ssh <virtualbox machine id>`. 
+After you have SSH into Docker Host you can SSH into running Docker Container by `docker exec -i -t <container name> /bin/bash`. Type `exit` to leave bash. 
 
 ### References
 - https://www.vagrantup.com/docs/getting-started/
