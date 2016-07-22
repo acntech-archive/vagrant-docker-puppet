@@ -30,6 +30,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   end
 
+  # Check for updates of Virtualbox Guest Additions
+  config.vbguest.auto_update = false
+
   # Assign a friendly name to this host VM
   config.vm.hostname = "docker-host"
 
@@ -59,6 +62,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Disable synced folders (prevents an NFS error on "vagrant up")
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
-  # Setup shared volumes
-  config.vm.synced_folder "/Users/ismarslomic/src", "/ismar-src"
+  # Setup shared volumes for source code
+  config.vm.synced_folder "../src/", "/srv/www", type: "rsync"
 end #Vagrant.configure
