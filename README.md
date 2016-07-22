@@ -18,6 +18,8 @@ This project has been inspired by Activelamp Blog posts:
 - [Setting up a Docker development environment with Vagrant - Part 3](http://activelamp.com/blog/devops/local-docker-development-with-vagrant/)
 - [Using Jenkins to bake images in a Docker Workflow - Part 4](http://activelamp.com/blog/devops/jenkins-build-docker-images/)
 
+and [Lessons building node app docker](http://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html)
+
 # Step 1 - Creating Dockerfile
 1. [Install](https://docs.docker.com/engine/installation/) Docker on your local laptop
 1. Create Dockerfile. _See https://docs.docker.com/engine/reference/builder/#dockerfile-reference for more information_
