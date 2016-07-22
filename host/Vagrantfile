@@ -63,5 +63,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   # Setup shared volumes for source code
-  config.vm.synced_folder "../src/", "/srv/www", type: "rsync"
+  config.vm.synced_folder "../src/", "/srv/www", type: "rsync", owner: "root", group: "root"
 end #Vagrant.configure
