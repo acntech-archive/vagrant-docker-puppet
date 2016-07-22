@@ -1,18 +1,21 @@
-# Specify the base image
-FROM        centos:centos6
+# Use node as base Docker image
+FROM        node
 
 # Set maintainer of this Docker container
 MAINTAINER  Ismar Slomic "ismar.slomic@accenture.com"
 
-# Enable Extra Packages for Enterprise Linux (EPEL) for CentOS
-RUN         yum install -y epel-release
+# Create new env variable HOME to point to the destination folder in container
+ENV         HOME=/srv/www
 
-# Install Node.js and npm
-RUN         yum install -y nodejs npm
+# Copy package.json file to container and run npm install to install the dependencies
+COPY        /src/package.json $HOME/
+# Set working directory to HOME for following commands
+WORKDIR     $HOME
+# Install all dependencies
+RUN         npm install
 
-# Bundle app and Install app dependencies
-COPY        /src /src
-RUN         cd /src; npm install --production
+# Copy src files (index.js)
+COPY        /src $HOME
 
-# Start node js process and index.js
-CMD         ["node", "/src/index.js"]
+# Run the application
+CMD         ["node_modules/nodemon/bin/nodemon.js", "index.js"]
