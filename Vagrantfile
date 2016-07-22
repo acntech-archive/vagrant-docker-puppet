@@ -47,8 +47,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         # Specify a friendly name for the Docker container
         docker.name = "nodeapp-container"
 
-        # Mount volumes that are available from Docker host (see host/Vagrantfile)
-        docker.volumes = ["/ismar-src:/ismar-src"]
+        # Mount volumes that are available from Docker host (see host/Vagrantfile). Adding node_modules volume is just a trick
+        # See The node_module Volume Trich at http://jdlm.info/articles/2016/03/06/lessons-building-node-app-docker.html
+        # Note that we need to create empty folder /src/node_modules as well, otherwise Vagrant will complain with permission issues
+        docker.create_args = ['--volume="/srv/www:/srv/www"', '--volume="/srv/www/node_modules"']
     end # config.vm.provider
 
 end # Vagrant.configure
